@@ -14,7 +14,7 @@ from  streamlit_folium import st_folium
 import folium
 
 st.set_page_config(layout="wide")
-st.title('Calcurate for the Moon')
+st.title('Calcurate for the Anti Moon')
 st.header('ヘッダを表示')
 st.subheader('サブヘッダを表示')
 st.caption('キャプションを表示')
