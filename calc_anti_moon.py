@@ -61,7 +61,7 @@ m = folium.Map(
 
 with st.container():
     with st.expander('観測地点をクリック'):
-        st_data = st_folium(m, width=1000, height=500)
+        st_data = st_folium(m, width=1200, height=500)
 
 with st.container():
     if st_data["last_clicked"] is not None:
