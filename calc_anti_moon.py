@@ -14,7 +14,7 @@ from  streamlit_folium import st_folium
 import folium
 
 st.set_page_config(layout="wide")
-st.title('Calcurate for the Anti Moon')
+st.title('Calculate for the Anti Moon')
 st.header('夜の暗さをなんとなく可視化')
 st.subheader('算出する期間を選択し、地図から観測場所を選択します。')
 st.caption('月の輝面率と高さを掛けてみただけなので本当の明るさかどうかは不明。')
@@ -125,8 +125,8 @@ with st.container():
         st.subheader('夜空の明るさの推測値 @ 0.00:暗 - 99.0:明')
         st.dataframe(df.style.background_gradient(cmap='Greys_r', axis=None).format('{:.2f}'), height=1122)
 
-        with st.expander('Moon phase. @月の輝面率 0.00：新月 - 1.00:満月'):
+        with st.expander('Bright surface ratio of the moon. @月の輝面率 0.00：新月 - 1.00:満月'):
             st.dataframe(df_phase.style.background_gradient(cmap='afmhot', axis=None).format('{:.2f}'), height=1122)
 
-        with st.expander('Alter the moon. @地平線からの月の高さ -90.0:真下 - 0:地平線 - 90.0:直上'):
+        with st.expander('Altitude the moon. @地平線からの月の高さ -90.0:真下 - 0:地平線 - 90.0:直上'):
             st.dataframe(df_alt.style.background_gradient(cmap='bone', axis=None).format('{:.2f}'), height=1122)
