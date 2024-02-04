@@ -114,14 +114,17 @@ st.caption('月の輝面率と高さを掛けてみただけなので本当の�
 with st.container():
     with st.expander('観測地点をクリック'):
         st_data = st_folium(m, width=1280, height=500)
+        if st_data["last_clicked"] is not None:
+            st.write("Lat[緯度]:", st_data["last_clicked"].get('lat', 'not found'), "Lon[経度]:", st_data["last_clicked"].get('lng', 'not found'))
+
 
 with st.container():
     if st_data["last_clicked"] is not None:
         i_locate = st_data["last_clicked"]
 
-        vp.lat = i_locate['lat']
-        vp.lon = i_locate['lng']
-        vp.elevation = 60
+        vp.lat = str(round(i_locate['lat'], 6))
+        vp.lon = str(round(i_locate['lng'], 6))
+        vp.elevation = 500
 
         df_brightness = mkdataframe(get_first_date(itime), get_last_date(itime), "calc")
         df_phase = mkdataframe(get_first_date(itime), get_last_date(itime), "phase")
