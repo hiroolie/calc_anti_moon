@@ -87,7 +87,7 @@ m = folium.Map(
   location=[35.6581, 139.7414],
   zoom_start=8,
   attr='Folium map'
-).add_to(m)
+)
 
 ## for ephem
 # Body class
