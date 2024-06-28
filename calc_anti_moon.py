@@ -35,7 +35,10 @@ def mkdataframe(fdate, ldate, method):
     ALTITUDE = deg(moon.alt)
     PHASE = moon.moon_phase * deg(moon.alt)
     # tALTITUDE = ALTITUDE / 90
-    tALTITUDE = ALTITUDE
+    if ALTITUDE < 0
+      tALTITUDE = 0
+    else:
+      tALTITUDE = ALTITUDE / 90
     return round(tALTITUDE * PHASE, 6)
   def phase_mlight(vp):
     moon.compute(vp)
