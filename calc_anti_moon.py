@@ -38,7 +38,7 @@ def mkdataframe(fdate, ldate, method):
     if ALTITUDE < 0:
       tALTITUDE = 0
     else:
-      tALTITUDE = ALTITUDE / 90
+      tALTITUDE = ALTITUDE
     return round(tALTITUDE * PHASE, 6)
   def phase_mlight(vp):
     moon.compute(vp)
