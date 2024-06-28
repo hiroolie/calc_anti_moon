@@ -35,7 +35,7 @@ def mkdataframe(fdate, ldate, method):
     ALTITUDE = deg(moon.alt)
     PHASE = moon.moon_phase * deg(moon.alt)
     # tALTITUDE = ALTITUDE / 90
-    if ALTITUDE < 0
+    if ALTITUDE < 0:
       tALTITUDE = 0
     else:
       tALTITUDE = ALTITUDE / 90
