@@ -2,6 +2,7 @@ import streamlit as st
 import ephem
 import calendar
 import matplotlib
+import folium
 import numpy as np
 import pandas as pd
 import datetime as dt
@@ -11,7 +12,6 @@ from math import degrees as deg
 from math import radians as rad
 from math import cos
 from  streamlit_folium import st_folium
-import folium
 # Streamlit config
 st.set_page_config(layout="wide")
 
@@ -115,7 +115,8 @@ with st.container():
   # with st.expander('観測地点をクリック'):
     st_data = st_folium(m, width=1280, height=500)
     if st_data["last_clicked"] is not None:
-      st.write("Lat[緯度]:", st_data["last_clicked"].get('lat', 'not found'), "Lon[経度]:", st_data["last_clicked"].get('lng', 'not found'))
+      with st.expander('観測地点をクリック'):
+        st.write("Lat[緯度]:", st_data["last_clicked"].get('lat', 'not found'), "Lon[経度]:", st_data["last_clicked"].get('lng', 'not found'))
 
 
 with st.container():
