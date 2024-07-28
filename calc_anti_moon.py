@@ -115,8 +115,8 @@ st.caption('月の輝面率と高さを掛けてみただけなので本当の�
 with st.expander('地図表示'):
   st.write('観測地点')
   st_data = st_folium(m, width=1280, height=500)
-  if st_data["last_clicked"] is not None:
-    st.write("Lat[緯度]:", st_data["last_clicked"].get('lat', 'not found'), "Lon[経度]:", st_data["last_clicked"].get('lng', 'not found'))
+  # if st_data["last_clicked"] is not None:
+  st.write("Lat[緯度]:", st_data["last_clicked"].get('lat', 'not found'), "Lon[経度]:", st_data["last_clicked"].get('lng', 'not found'))
 
 
 with st.container():
