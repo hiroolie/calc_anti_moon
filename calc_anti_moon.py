@@ -85,7 +85,7 @@ dt_now = dt.datetime.now()
 m = folium.Map(
   location=[35.6581, 139.7414],
   zoom_start=8,
-  attr='Folium map'
+  # attr='Folium map'
 )
 ## for ephem
 # Body class
@@ -113,9 +113,9 @@ st.caption('月の輝面率と高さを掛けてみただけなので本当の�
 
 # with st.container():
 with st.expander('地図表示'):
-  st_data = st_folium(m, width=1280, height=500)
   st_data
   st.write(st_data)
+  st_data = st_folium(m, width=1280, height=500)
   if st_data["last_clicked"] is not None:
     st.write("Lat[緯度]:", st_data["last_clicked"].get('lat', 'not found'), "Lon[経度]:", st_data["last_clicked"].get('lng', 'not found'))
 
