@@ -116,7 +116,7 @@ with st.container():
     st_data = st_folium(m, width=1280, height=500)
     with st.expander('観測地点をクリック'):
       if st_data["last_clicked"] is not None:
-      st.write("Lat[緯度]:", st_data["last_clicked"].get('lat', 'not found'), "Lon[経度]:", st_data["last_clicked"].get('lng', 'not found'))
+        st.write("Lat[緯度]:", st_data["last_clicked"].get('lat', 'not found'), "Lon[経度]:", st_data["last_clicked"].get('lng', 'not found'))
 
 
 with st.container():
