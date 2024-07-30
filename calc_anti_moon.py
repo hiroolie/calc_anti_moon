@@ -112,10 +112,10 @@ st.subheader('算出する期間を選択し、地図から観測場所を選択
 st.caption('月の輝面率と高さを掛けてみただけなので本当の明るさかどうかは不明。')
 
 with st.container():
-# with st.expander('地図表示'):
-  st_data = st_folium(m, width=1280, height=500)
-  if st_data["last_clicked"] is not None:
-    st.write("Lat[緯度]:", st_data["last_clicked"].get('lat', 'not found'), "Lon[経度]:", st_data["last_clicked"].get('lng', 'not found'))
+  with st.expander('地図表示'):
+    st_data = st_folium(m, width=1280, height=500)
+    if st_data["last_clicked"] is not None:
+      st.write("Lat[緯度]:", st_data["last_clicked"].get('lat', 'not found'), "Lon[経度]:", st_data["last_clicked"].get('lng', 'not found'))
 
 
 with st.container():
