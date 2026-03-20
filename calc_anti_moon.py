@@ -88,6 +88,9 @@ m = folium.Map(
   zoom_start=8,
   # attr='Folium map'
 )
+folium.Marker(
+    [35.6581, 139.7414], popup="Liberty Bell", tooltip="Liberty Bell"
+).add_to(m)
 ## for ephem
 # Body class
 moon = ephem.Moon()
