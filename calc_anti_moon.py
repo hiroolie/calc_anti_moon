@@ -12,7 +12,7 @@ from pytz import timezone
 from math import degrees as deg
 from math import radians as rad
 from math import cos
-from  streamlit_folium import st_folium
+from streamlit_folium import st_folium
 # Streamlit config
 st.set_page_config(layout="wide")
 
@@ -83,11 +83,7 @@ def mkdataframe(fdate, ldate, method):
 dt_now = dt.datetime.now()
 ## Maps
 # create map object
-m = folium.Map(
-  location=[35.6581, 139.7414],
-  zoom_start=8,
-  # attr='Folium map'
-)
+m = folium.Map(location=[35.6581, 139.7414], zoom_start=8)
 folium.Marker(
     [35.6581, 139.7414], popup="Liberty Bell", tooltip="Liberty Bell"
 ).add_to(m)
@@ -117,7 +113,7 @@ st.caption('月の輝面率と高さを掛けてみただけなので本当の�
 
 # with st.container():
 # with st.expander('地図表示'):
-st_data = st_folium(m, width=1280, height=500)
+st_data = st_folium(m, width=780)
 if st_data["last_clicked"] is not None:
   st.write("Lat[緯度]:", st_data["last_clicked"].get('lat', 'not found'), "Lon[経度]:", st_data["last_clicked"].get('lng', 'not found'))
 
