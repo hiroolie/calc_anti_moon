@@ -3,7 +3,7 @@ pytz
 pandas
 numpy
 jinja2
-streamlit=1.55.0
+streamlit==1.55.0
 notebook
 jupyterhub
 pandas
