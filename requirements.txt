@@ -10,3 +10,4 @@ pandas
 matplotlib
 streamlit_folium
 altair<5
+standard-imghdr
