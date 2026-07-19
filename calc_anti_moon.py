@@ -21,6 +21,10 @@ st.set_page_config(layout="wide")
 # この値以下なら月明かりなし(明るさ0)として扱い、df_altのグラデーション最小値(vmin)にも使う。
 ALT_FLOOR = -1.0
 
+# df_brightnessに掛ける高さ係数の効きの強さ。
+# 1.0=線形。値を大きくするほど低い月をより暗くする(暗さの反映を強める)。
+ALT_HEIGHT_GAIN = 1.0
+
 ### Definition of functions
 def get_first_date(itime):
   return itime.replace(day=1)
@@ -44,7 +48,12 @@ def mkdataframe(fdate, ldate, method):
     if ALTITUDE <= ALT_FLOOR:
       return 0
     tALTITUDE = ALTITUDE + 90
-    return round((tALTITUDE * PHASE) / 2, 6)
+    base = (tALTITUDE * PHASE) / 2
+    # 高さ係数: ALT_FLOORで0.0、天頂(90度)で1.0になる線形の重み。
+    # 低い月ほど暗く（0に近く）なるように土台の明るさへ掛ける。
+    # ALT_HEIGHT_GAIN を上げるほど高さの効きが強くなる(1.0=線形、>1で低い月をより暗く)。
+    alt_weight = ((ALTITUDE - ALT_FLOOR) / (90 - ALT_FLOOR)) ** ALT_HEIGHT_GAIN
+    return round(base * alt_weight, 6)
   def phase_mlight(vp):
     moon.compute(vp)
     return round(moon.moon_phase, 6)
