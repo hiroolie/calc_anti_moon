@@ -137,4 +137,4 @@ with st.container():
       st.dataframe(df_phase.style.background_gradient(cmap='afmhot', axis=None).format('{:.2f}'), height=1122)
 
     with st.expander('Alter the moon. @地平線からの月の高さ -90.0:真下 - 0:地平線 - 90.0:直上'):
-      st.dataframe(df_alt.style.background_gradient(cmap='bone', axis=None, vmin=0, vmax=90).format('{:.2f}'), height=1122)
+      st.dataframe(df_alt.style.background_gradient(cmap='bone', axis=None, vmin=-1.0, vmax=90).format('{:.2f}'), height=1122)
