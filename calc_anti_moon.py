@@ -23,7 +23,7 @@ ALT_FLOOR = -1.0
 
 # df_brightnessに掛ける高さ係数の効きの強さ。
 # 1.0=線形。値を大きくするほど低い月をより暗くする(暗さの反映を強める)。
-ALT_HEIGHT_GAIN = 1.0
+ALT_HEIGHT_GAIN = 0.3
 
 ### Definition of functions
 def get_first_date(itime):
