@@ -19,7 +19,7 @@ st.set_page_config(layout="wide")
 ### Configuration
 # 月が「実質沈んでいる」とみなす高さのしきい値[度]。
 # この値以下なら月明かりなし(明るさ0)として扱い、df_altのグラデーション最小値(vmin)にも使う。
-ALT_FLOOR = 0.0
+ALT_FLOOR = -3.0
 
 # df_brightnessに掛ける高さ係数の効きの強さ。
 # 1.0=線形。値を大きくするほど低い月をより暗くする(暗さの反映を強める)。
