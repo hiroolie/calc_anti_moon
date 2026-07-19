@@ -16,6 +16,11 @@ from streamlit_folium import st_folium
 # Streamlit config
 st.set_page_config(layout="wide")
 
+### Configuration
+# 月が「実質沈んでいる」とみなす高さのしきい値[度]。
+# この値以下なら月明かりなし(明るさ0)として扱い、df_altのグラデーション最小値(vmin)にも使う。
+ALT_FLOOR = -1.0
+
 ### Definition of functions
 def get_first_date(itime):
   return itime.replace(day=1)
@@ -35,6 +40,9 @@ def mkdataframe(fdate, ldate, method):
     moon.compute(vp)
     ALTITUDE = deg(moon.alt)
     PHASE = moon.moon_phase
+    # 月の高さがALT_FLOOR以下（地平線以下）なら月明かりなしとして0
+    if ALTITUDE <= ALT_FLOOR:
+      return 0
     tALTITUDE = ALTITUDE + 90
     return round((tALTITUDE * PHASE) / 2, 6)
   def phase_mlight(vp):
@@ -137,4 +145,4 @@ with st.container():
       st.dataframe(df_phase.style.background_gradient(cmap='afmhot', axis=None).format('{:.2f}'), height=1122)
 
     with st.expander('Alter the moon. @地平線からの月の高さ -90.0:真下 - 0:地平線 - 90.0:直上'):
-      st.dataframe(df_alt.style.background_gradient(cmap='bone', axis=None, vmin=-1.0, vmax=90).format('{:.2f}'), height=1122)
+      st.dataframe(df_alt.style.background_gradient(cmap='bone', axis=None, vmin=ALT_FLOOR, vmax=90).format('{:.2f}'), height=1122)
