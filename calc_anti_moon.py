@@ -3,6 +3,7 @@ import ephem
 import calendar
 import matplotlib
 import folium
+import json
 import numpy as np
 import pandas as pd
 import datetime as dt
@@ -11,7 +12,7 @@ from pytz import timezone
 from math import degrees as deg
 from math import radians as rad
 from math import cos
-from  streamlit_folium import st_folium
+from streamlit_folium import st_folium
 # Streamlit config
 st.set_page_config(layout="wide")
 
@@ -82,11 +83,10 @@ def mkdataframe(fdate, ldate, method):
 dt_now = dt.datetime.now()
 ## Maps
 # create map object
-m = folium.Map(
-  location=[35.6581, 139.7414],
-  zoom_start=8,
-  # attr='Folium map'
-)
+m = folium.Map(location=[35.6581, 139.7414], zoom_start=8)
+folium.Marker(
+    [35.6581, 139.7414], popup="Liberty Bell", tooltip="Liberty Bell"
+).add_to(m)
 ## for ephem
 # Body class
 moon = ephem.Moon()
@@ -137,4 +137,4 @@ with st.container():
       st.dataframe(df_phase.style.background_gradient(cmap='afmhot', axis=None).format('{:.2f}'), height=1122)
 
     with st.expander('Alter the moon. @地平線からの月の高さ -90.0:真下 - 0:地平線 - 90.0:直上'):
-      st.dataframe(df_alt.style.background_gradient(cmap='bone', axis=None).format('{:.2f}'), height=1122)
+      st.dataframe(df_alt.style.background_gradient(cmap='bone', axis=None, vmin=0, vmax=90).format('{:.2f}'), height=1122)
